@@ -20,12 +20,11 @@ config_setting(
     flag_values = {":llvm_enable_zlib": "true"},
 )
 
-genrule(
+copy_file(
     # The input template is identical to the CMake output.
     name = "zconf_gen",
-    srcs = ["zconf.h.in"],
-    outs = ["zconf.h"],
-    cmd = "cp $(SRCS) $(OUTS)",
+    src = "zconf.h.in",
+    out = "zconf.h",
 )
 
 cc_library(
